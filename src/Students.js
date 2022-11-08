@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect} from 'react';
+import {Link} from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-function User() {
-  const [users,setUsers]= useState([]);
+function Students() {
+  const [students,setStudents]= useState([]);
   const [isLoading,setLoading]=useState(false);
   useEffect(()=>{
     fetchData()
@@ -13,15 +13,15 @@ function User() {
   let fetchData = async () => {
     try{
       setLoading(true)
-      const users= await axios.get("https://634d63a6acb391d34a9c1ad0.mockapi.io/user")
-      setUsers(users.data)
+      const students= await axios.get("https://634d63a6acb391d34a9c1ad0.mockapi.io/students")
+      setStudents(students.data)
       setLoading(false)
     }catch(error){
      alert("error")
     }
   }
 
-  let deleteUser= () => {
+  let deleteStudent= () => {
     const result=window.confirm("Are you sure do you want to delete")
       if(result){
         alert("Deleted")
@@ -30,12 +30,12 @@ function User() {
   return (
     <div className="container-fluid">
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 mb-0 text-gray-800">Users</h1>
+        <h1 className="h3 mb-0 text-gray-800">Students</h1>
         <Link
-          to={"/portal/users/user_create"}
+          to={"/portal/students/student_create"}
           className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
         >
-          <i className="fas fa-download fa-sm text-white-50"></i> Create User{" "}
+          <i className="fas fa-download fa-sm text-white-50"></i> Create Student{" "}
         </Link>
       </div>
       {
@@ -54,11 +54,10 @@ function User() {
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Username</th>
+                  <th>Studentname</th>
                   <th>Email</th>
-                  <th>Country</th>
-                  <th>State</th>
-                  <th>City</th>
+                  <th>Class</th>
+                  <th>Marks</th>
                   <th>Phone</th>
                   <th>Dob</th>
                   <th>Gender</th>
@@ -67,12 +66,11 @@ function User() {
               </thead>
               <tfoot>
                 <tr>
-                <th>ID</th>
-                  <th>Username</th>
+                  <th>ID</th>
+                  <th>Studentname</th>
                   <th>Email</th>
-                  <th>Country</th>
-                  <th>State</th>
-                  <th>City</th>
+                  <th>Class</th>
+                  <th>Marks</th>
                   <th>Phone</th>
                   <th>Dob</th>
                   <th>Gender</th>
@@ -80,21 +78,20 @@ function User() {
                 </tr>
               </tfoot>
               <tbody>
-                {users.map((user)=>{
+                {students.map((student)=>{
                   return <tr>
-                  <td>{user.id}</td>
-                  <td>{user.username}</td>
-                  <td>{user.email}</td>
-                  <td>{user.country}</td>
-                  <td>{user.state}</td>
-                  <td>{user.city}</td>
-                  <td>{user.phone}</td>
-                  <td>{user.dob}</td>
-                  <td>{user.gender}</td>
+                  <td>{student.id}</td>
+                  <td>{student.studentname}</td>
+                  <td>{student.email}</td>
+                  <td>{student.class}</td>
+                  <td>{student.marks}</td>
+                  <td>{student.phone}</td>
+                  <td>{student.dob}</td>
+                  <td>{student.gender}</td>
                   <td>
-                    <Link to={`user/${user.id}`}className="btn btn-primary mr-2 md-2">Profile </Link>
-                    <Link to={`edit/${user.id}`} className="btn btn-warning mr-2">Edit</Link>
-                    <button onClick={() => deleteUser()} className="btn btn-danger">Delete</button>
+                    <Link to={`student/${student.id}`}className="btn btn-primary mr-2 md-2">Profile </Link>
+                    <Link to={`edit/${student.id}`} className="btn btn-warning mr-2">Edit</Link>
+                    <button onClick={() => deleteStudent()} className="btn btn-danger">Delete</button>
                   </td>
                 </tr>
                 })}
@@ -108,4 +105,4 @@ function User() {
   );
 }
 
-export default User;
+export default Students;

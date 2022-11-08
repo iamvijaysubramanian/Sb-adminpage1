@@ -4,45 +4,78 @@ import {Link} from "react-router-dom";
 function Sidebar() {
   return (
     <ul
-      class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+      className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
       id="accordionSidebar"
     >
       <a
-        class="sidebar-brand d-flex align-items-center justify-content-center"
+        className="sidebar-brand d-flex align-items-center justify-content-center"
         href="index.html"
       >
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <div className="sidebar-brand-icon rotate-n-15">
+          <i className="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">
+        <div className="sidebar-brand-text mx-3">
           SB Admin <sup>2</sup>
         </div>
       </a>
 
-      <hr class="sidebar-divider my-0" />
+      <hr className="sidebar-divider my-0" />
 
-      <li class="nav-item active">
-        <Link to={"/dashboard"} class="nav-link">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+      <li className="nav-item active">
+        <Link to={"/portal/dashboard"} className="nav-link">
+          <i className="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </Link>
       </li>
 
-      <hr class="sidebar-divider" />
+      <hr className="sidebar-divider" />
 
-      <div class="sidebar-heading">Interface</div>
+      <div className="sidebar-heading">Interface</div>
 
-      <li class="nav-item">
+      <li className="nav-item">
         <Link
-          to={"/users"}
-          class="nav-link collapsed"
+          to={"/portal/users"}
+          className="nav-link collapsed"
           data-toggle="collapse"
           data-target="#collapseTwo"
           aria-expanded="true"
           aria-controls="collapseTwo"
         >
-          <i class="fas fa-fw fa-cog"></i>
+          <i className="fas fa-fw fa-cog"></i>
           <span>Users</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to={"products"}
+         className="nav-link collapsed"
+         data-toggle="collapse"
+         data-target="#collapseTwo"
+         aria-expanded="true"
+         aria-controls="collapseTwo"
+       >
+        <span>Products</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to={"students"}
+         className="nav-link collapsed"
+         data-toggle="collapse"
+         data-target="#collapseTwo"
+         aria-expanded="true"
+         aria-controls="collapseTwo"
+       >
+        <span>Students</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to={"teachers"}
+         className="nav-link collapsed"
+         data-toggle="collapse"
+         data-target="#collapseTwo"
+         aria-expanded="true"
+         aria-controls="collapseTwo"
+       >
+        <span>Teachers</span>
         </Link>
       </li>
     </ul>
